@@ -8,27 +8,44 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset('images/welcome.png'),
-          Text(
-            "Welcome to Stock!",
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                Text(
+                  "Welcome to Stock!",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
                 ),
-          ),
-          const Text(
-              "Connect to the goods or merchandise kept on the premises of a shop or warehouse and available for sale or distribution."),
-          const CustomButton(
-            text: "Login",
-            textStyle:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          const CustomButton(
-            text: "Get started",
-            textStyle:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                    "Connect to the goods or merchandise kept on the premises of a shop or warehouse and available for sale or distribution."),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CustomButton(
+                  text: "Login",
+                  textStyle: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomButton(
+                  text: "Get started",
+                  borderColor: Colors.purple[100],
+                  fillColor: Colors.transparent,
+                  textStyle: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+              ],
+            ),
           ),
         ],
       ),
