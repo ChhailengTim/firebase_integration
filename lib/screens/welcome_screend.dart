@@ -1,3 +1,4 @@
+import 'package:firebase_integration/screens/dashboard_screen.dart';
 import 'package:firebase_integration/screens/login_screen.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,12 @@ class WelcomeScreen extends StatelessWidget {
                   height: 20,
                 ),
                 CustomButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashboardScreen()));
+                  },
                   text: "Get started",
                   borderColor: Colors.purple[100],
                   fillColor: Colors.transparent,
