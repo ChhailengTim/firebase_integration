@@ -1,3 +1,4 @@
+import 'package:firebase_integration/screens/signup_screen.dart';
 import 'package:firebase_integration/utils/appbar_login.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:firebase_integration/utils/custom_textformfield.dart';
@@ -15,7 +16,9 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const LoginAppBar(),
+            const LoginAppBar(
+              title: "Login to your account",
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
@@ -124,6 +127,38 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                          color: Colors.purple,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignupScreen()));
+                        },
+                        child: const Text(
+                          'Sign up',
+                          style: TextStyle(
+                            color: Colors.purple,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
