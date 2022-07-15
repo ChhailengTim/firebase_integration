@@ -1,3 +1,5 @@
+import 'package:firebase_integration/utils/appbar_login.dart';
+import 'package:firebase_integration/utils/product_test.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -8,8 +10,54 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: const [
-            Text("data"),
+          children: [
+            const LoginAppBar(
+              title: 'Explore products',
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  ProductTest(),
+                  ProductTest(),
+                  ProductTest(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  ProductTest(),
+                  ProductTest(),
+                  ProductTest(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  ProductTest(),
+                  ProductTest(),
+                  ProductTest(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  ProductTest(),
+                  ProductTest(),
+                  ProductTest(),
+                ],
+              ),
+            ),
           ],
         ),
       ),
