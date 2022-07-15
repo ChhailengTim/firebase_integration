@@ -1,3 +1,4 @@
+import 'package:firebase_integration/screens/login_screen.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +30,15 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const CustomButton(
+                CustomButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
+                  },
                   text: "Login",
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 const SizedBox(
