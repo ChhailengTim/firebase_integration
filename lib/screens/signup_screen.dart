@@ -1,13 +1,16 @@
+import 'package:firebase_integration/controller/auth_controller.dart';
 import 'package:firebase_integration/utils/appbar_login.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:firebase_integration/utils/custom_textformfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final AuthController authController = Get.put(AuthController());
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -23,15 +26,17 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: CustomTextFormField(
+                      controller: authController.emailController,
                       label: "Username",
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: CustomTextFormField(
+                      controller: authController.passwordController,
                       label: "Password",
                     ),
                   ),
@@ -41,7 +46,12 @@ class SignupScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        AuthController.instance.singup(
+                          authController.emailController.text.trim(),
+                          authController.passwordController.text.trim(),
+                        );
+                      },
                       text: "Signup",
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
