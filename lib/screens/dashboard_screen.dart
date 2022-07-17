@@ -1,4 +1,5 @@
 import 'package:firebase_integration/controller/auth_controller.dart';
+import 'package:firebase_integration/screens/add_product.dart';
 import 'package:firebase_integration/utils/appbar_login.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:firebase_integration/utils/product_test.dart';
@@ -74,6 +75,13 @@ class DashboardScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const AddProduct()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
