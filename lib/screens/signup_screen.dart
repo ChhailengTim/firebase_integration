@@ -37,6 +37,7 @@ class SignupScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: CustomTextFormField(
                       controller: authController.passwordController,
+                      obscureText: true,
                       label: "Password",
                     ),
                   ),
