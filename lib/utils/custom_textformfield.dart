@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final bool? enable;
   final String? hintText;
   final String? labelText;
   final String? label;
@@ -12,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   final FormFieldSetter<String>? onSaved;
   final ValueChanged<String>? onChanged;
   final FormFieldValidator<String>? validator;
+  final List<TextInputFormatter>? inputFormatters;
   const CustomTextFormField(
       {Key? key,
       this.onSaved,
@@ -24,7 +27,9 @@ class CustomTextFormField extends StatelessWidget {
       this.controller,
       this.borderColor,
       this.obscureText,
-      this.validator})
+      this.validator,
+      this.enable,
+      this.inputFormatters})
       : super(key: key);
 
   @override
@@ -41,11 +46,13 @@ class CustomTextFormField extends StatelessWidget {
                 )
               : const SizedBox(),
           TextFormField(
+            enabled: enable ?? true,
             validator: validator,
             obscureText: obscureText ?? false,
             controller: controller,
             onSaved: onSaved,
             onChanged: onChanged,
+            inputFormatters: inputFormatters ?? [],
             decoration: InputDecoration(
               fillColor: Colors.black12,
               filled: true,
