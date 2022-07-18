@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 
 class LoginAppBar extends StatelessWidget {
   final String? title;
-  const LoginAppBar({Key? key, this.title}) : super(key: key);
+  final VoidCallback? onPress;
+  final IconData? icon;
+  const LoginAppBar({
+    Key? key,
+    this.title,
+    this.onPress,
+    this.icon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +32,14 @@ class LoginAppBar extends StatelessWidget {
           title ?? "add your title",
           style: const TextStyle(
               fontWeight: FontWeight.bold, color: Colors.purple, fontSize: 25),
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: onPress,
+          icon: Icon(
+            icon,
+            color: Colors.purple,
+          ),
         ),
       ],
     );
