@@ -19,6 +19,14 @@ class ProductController extends GetxController {
   void clearData() {
     proname.value = '';
     proName.value.text = '';
+    procategory.value = '';
+    proCategory.value.text = '';
+    proprice.value = '';
+    proPrice.value.text = '';
+    prodiscout.value = '';
+    proDiscout.value.text = '';
+    proamout.value = '';
+    proAmout.value.text = '';
   }
 
   void priceCalculator() {
