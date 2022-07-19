@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_integration/controller/auth_controller.dart';
+import 'package:firebase_integration/controller/product_controller.dart';
 import 'package:firebase_integration/screens/add_product.dart';
 import 'package:firebase_integration/utils/appbar_login.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.put(AuthController());
+    final ProductController productController = Get.put(ProductController());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -28,7 +30,13 @@ class DashboardScreen extends StatelessWidget {
                       .collection('products')
                       .snapshots(),
                   builder: (index, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    return const Text("data");
+                    if (snapshot.hasError) {
+                      return Text("data ${snapshot.error}");
+                    }
+                    if (snapshot.hasData) {
+                      return const Text("data");
+                    }
+                    return const SizedBox();
                   }),
             ],
           ),
