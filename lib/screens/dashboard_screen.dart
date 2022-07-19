@@ -15,17 +15,17 @@ class DashboardScreen extends StatelessWidget {
     final ProductController productController = Get.put(ProductController());
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              LoginAppBar(
-                title: 'Explore products',
-                onPress: () {
-                  authController.logout();
-                },
-                icon: Icons.logout_outlined,
-              ),
-              StreamBuilder(
+        child: Column(
+          children: [
+            LoginAppBar(
+              title: 'Explore products',
+              onPress: () {
+                authController.logout();
+              },
+              icon: Icons.logout_outlined,
+            ),
+            Expanded(
+              child: StreamBuilder(
                   stream: FirebaseFirestore.instance
                       .collection('products')
                       .snapshots(),
@@ -33,13 +33,46 @@ class DashboardScreen extends StatelessWidget {
                     if (snapshot.hasError) {
                       return Text("data ${snapshot.error}");
                     }
+                    var allProduct = 0;
+                    List<DocumentSnapshot> getProduct;
                     if (snapshot.hasData) {
-                      return const Text("data");
+                      getProduct = snapshot.data!.docs;
+                      allProduct = getProduct.length;
+                      snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data =
+                            document.data()! as Map<String, dynamic>;
+                        return GridView.builder(
+                            itemCount: allProduct,
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              crossAxisSpacing: 2,
+                              mainAxisSpacing: 2,
+                            ),
+                            itemBuilder: (BuildContext context, index) {
+                              return Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    color: Colors.orange,
+                                    child: Text(
+                                      '${getProduct[index]['name']}',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            });
+                      });
                     }
                     return const SizedBox();
                   }),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
