@@ -33,41 +33,79 @@ class DashboardScreen extends StatelessWidget {
                     if (snapshot.hasError) {
                       return Text("data ${snapshot.error}");
                     }
-                    var allProduct = 0;
-                    List<DocumentSnapshot> getProduct;
                     if (snapshot.hasData) {
-                      getProduct = snapshot.data!.docs;
-                      allProduct = getProduct.length;
-                      snapshot.data!.docs.map((DocumentSnapshot document) {
-                        Map<String, dynamic> data =
-                            document.data()! as Map<String, dynamic>;
-                        return GridView.builder(
-                            itemCount: allProduct,
-                            shrinkWrap: true,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 2,
-                              mainAxisSpacing: 2,
-                            ),
-                            itemBuilder: (BuildContext context, index) {
-                              return Column(
+                      return ListView(
+                        children: snapshot.data!.docs
+                            .map((DocumentSnapshot document) {
+                          Map<String, dynamic> data =
+                              document.data()! as Map<String, dynamic>;
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 20),
+                              child: Stack(
                                 children: [
+                                  Column(
+                                    children: [
+                                      Image.network('${data['photo']}'),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            data['name'],
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            'Category: ${data['category']}',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text('Price: \$${data['price']}'),
+                                          const Spacer(),
+                                          Text('Total: \$${data['amount']}'),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
                                   Container(
-                                    height: 50,
-                                    width: 50,
-                                    color: Colors.orange,
-                                    child: Text(
-                                      '${getProduct[index]['name']}',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.pink,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Discount: % ${data['discount']}',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ],
-                              );
-                            });
-                      });
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      );
                     }
                     return const SizedBox();
                   }),
