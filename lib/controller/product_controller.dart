@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final proname = ''.obs;
   final procategory = ''.obs;
   final proprice = ''.obs;
