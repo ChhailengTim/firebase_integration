@@ -25,6 +25,15 @@ class AddProduct extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black38),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Icon(Icons.add),
+                    ),
+                  ),
                   CustomTextFormField(
                     onSaved: (value) {
                       productController.proname(value);
