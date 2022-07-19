@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_integration/controller/auth_controller.dart';
-import 'package:firebase_integration/controller/product_controller.dart';
 import 'package:firebase_integration/screens/add_product.dart';
 import 'package:firebase_integration/utils/appbar_login.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.put(AuthController());
-    final ProductController productController = Get.put(ProductController());
+    // final ProductController productController = Get.put(ProductController());
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -115,8 +114,8 @@ class DashboardScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddProduct()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddProduct()));
         },
         child: const Icon(Icons.add),
       ),
