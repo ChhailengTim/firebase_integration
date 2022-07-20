@@ -63,7 +63,7 @@ class _AddProductState extends State<AddProduct> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: const Text("Add product"),
+        title: const Text("Adding product"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
