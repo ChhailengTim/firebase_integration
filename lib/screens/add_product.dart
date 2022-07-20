@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_integration/controller/product_controller.dart';
-import 'package:firebase_integration/model/product_model.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:firebase_integration/utils/custom_textformfield.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -44,7 +43,6 @@ class _AddProductState extends State<AddProduct> {
 
   Future uploadImage() async {
     final postID = DateTime.now().millisecondsSinceEpoch.toString();
-    var item = ProductModel();
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     Reference ref = FirebaseStorage.instance
         .ref()
@@ -54,7 +52,10 @@ class _AddProductState extends State<AddProduct> {
     await ref.putFile(image!);
 
     //upload to cloudfirestore
-    firebaseFirestore.collection('products').doc(item.name).collection('photo');
+    firebaseFirestore
+        .collection('products')
+        .doc(widget.productID)
+        .collection('photo');
   }
 
   @override
@@ -62,7 +63,7 @@ class _AddProductState extends State<AddProduct> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: const Text("Adding product"),
+        title: const Text("Add product"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
