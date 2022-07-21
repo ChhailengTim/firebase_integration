@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final prophoto = ''.obs;
   final proname = ''.obs;
   final procategory = ''.obs;
   final proprice = ''.obs;
@@ -18,6 +19,7 @@ class ProductController extends GetxController {
   final proAmout = TextEditingController().obs;
 
   void clearData() {
+    prophoto.value = '';
     proname.value = '';
     proName.value.text = '';
     procategory.value = '';
