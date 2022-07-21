@@ -15,8 +15,8 @@ class AddProduct extends StatefulWidget {
     Key? key,
     this.productID,
   }) : super(key: key);
-  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? productID;
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   State<AddProduct> createState() => _AddProductState();
@@ -25,6 +25,7 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   final ProductController productController = Get.put(ProductController());
   File? image;
+  String? downloadURL;
 
   Future pickImage() async {
     try {
@@ -37,7 +38,7 @@ class _AddProductState extends State<AddProduct> {
         this.image = imageTemp;
       });
     } on PlatformException catch (e) {
-      print('Failed pick image: $e');
+      debugPrint('Failed pick image: $e');
     }
   }
 
@@ -50,6 +51,7 @@ class _AddProductState extends State<AddProduct> {
         .child('pro_$postID');
 
     await ref.putFile(image!);
+    downloadURL = await ref.getDownloadURL();
 
     //upload to cloudfirestore
     firebaseFirestore
