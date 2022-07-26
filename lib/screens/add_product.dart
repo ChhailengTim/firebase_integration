@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+// ignore: must_be_immutable
 class AddProduct extends StatefulWidget {
   AddProduct({
     Key? key,
