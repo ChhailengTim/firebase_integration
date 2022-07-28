@@ -1,5 +1,5 @@
-import 'package:firebase_integration/screens/dashboard_screen.dart';
 import 'package:firebase_integration/screens/login_screen.dart';
+import 'package:firebase_integration/screens/resturant_page.dart';
 import 'package:firebase_integration/utils/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const DashboardScreen()));
+                            builder: (context) => const ResturantPage()));
                   },
                   text: "Get started",
                   borderColor: Colors.purple[100],
