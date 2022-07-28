@@ -13,11 +13,16 @@ class ResturantAppBar extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      leading: const Padding(
-        padding: EdgeInsets.only(left: 16),
-        child: CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Icon(Icons.arrow_back),
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Padding(
+          padding: EdgeInsets.only(left: 16),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(Icons.arrow_back),
+          ),
         ),
       ),
       actions: const [
