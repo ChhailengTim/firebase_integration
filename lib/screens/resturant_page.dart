@@ -1,3 +1,5 @@
+import 'package:firebase_integration/utils/resturant_appbar.dart';
+import 'package:firebase_integration/utils/resturant_infor.dart';
 import 'package:flutter/material.dart';
 
 class ResturantPage extends StatefulWidget {
@@ -13,8 +15,9 @@ class _ResturantPageState extends State<ResturantPage> {
     return const Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            expandedHeight: 200,
+          ResturantAppBar(),
+          SliverToBoxAdapter(
+            child: ResturantInfor(),
           ),
         ],
       ),
