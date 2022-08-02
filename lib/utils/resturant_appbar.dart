@@ -14,7 +14,7 @@ class ResturantAppBar extends StatelessWidget {
         ),
       ),
       leading: GestureDetector(
-        onTap: () {
+        onTap: () { 
           Navigator.pop(context);
         },
         child: const Padding(
